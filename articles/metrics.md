@@ -21,7 +21,7 @@
 ## Retention Metrics
 
 1) Retained users.
-   -   let's say that 100 users visited out website last month and got activated. Then we see this month that 60 of them are actually here again using the website, we would say that our user retention rate is at 60%.
+   -   let's say that 100 users visited our website last month and got activated. Then we see this month that 60 of them are actually here again using the website, we would say that our user retention rate is at 60%.
 
 2) Resurrected users.
 
@@ -36,12 +36,12 @@
 
 Details on how we calculate those metrics are mentioned in the table below.
 
- It's basically a survey that goes out 
+
 
 ## User Happiness
 1) NPS Scores. (Net promoter score)
 
-   - Send ac Survey to users to track how likely they are to recommend our product to other people.
+   - Send a Survey to users to track how likely they are to recommend our product to other people.
 
 2) Social Media Feedbacks (from comments, rating, ets ...)
 
@@ -57,7 +57,7 @@ Details on how we calculate those metrics are mentioned in the table below.
 
 3) Monthly recurring revenue (MRR) or Annually recurring revenue (ARR)
 
-This is basically how much revenue are we making per month or per year and this is of all of our customers combined. let's say we have every month 20 clients spend an average of 150 JOD, then our monthly recurring revenue is going to be 3000 JOD. 
+   - This is basically how much revenue are we making per month or per year and this is of all of our customers combined. let's say we have every month 20 clients spend an average of 150 JOD, then our monthly recurring revenue is going to be 3000 JOD. 
 
 ## More Metrics 
 
