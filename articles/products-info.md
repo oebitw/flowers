@@ -22,11 +22,11 @@ if the user entered the page from the link in the navBar or from the link in the
 
 1) The filters will be selected on the :
 
-     - 5 Set of Roses
+   - 5 Set of Roses
 
-     - Black Box
+   - Black Box
 
-     - Red Roses
+   - Red Roses
 
 2) Picture for five-set of red roses aligned perfectly in our black branded box.
 
