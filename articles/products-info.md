@@ -22,11 +22,11 @@ if the user entered the page from the link in the navBar or from the link in the
 
 1) The filters will be selected on the :
 
-   A) 5 Set of Roses
+     - 5 Set of Roses
 
-   B) Black Box
+     - Black Box
 
-   C) Red Roses
+     - Red Roses
 
 2) Picture for five-set of red roses aligned perfectly in our black branded box.
 
@@ -41,12 +41,12 @@ If the User Entered from the categories section on the home page, where the user
 note that the user didn't select the size of the box and the color of the roses so when the user enter the page the following will be rendered:
 
 1) The filters will be selected on the : 
-   A) 5 Set of Roses 
+   - 5 Set of Roses 
 
-   B) The box color that the user selected on the home page 
+   - The box color that the user selected on the home page 
    (Categories Section)
 
-   C) Red Roses
+   - Red Roses
 
 2) Picture for five-set of red roses aligned perfectly in the selected box.
 
