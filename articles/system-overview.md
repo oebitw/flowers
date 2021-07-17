@@ -146,11 +146,7 @@ In this epic we will be adding a two full page views to the application: Product
 
 - A user can checkout to online payment or can chose to pay cash on delivery.
 
-## Non-Functional Requirements
 
-- Security: For creating user accounts, the bcrypt hashing function allows us to build a password security platform that scales with computation power and always hashes every password with a salt.
-
-Flexibility : the menu is shown in every page so the user can navigate easily between pages
 
 
 ### Data Flow:
