@@ -88,7 +88,7 @@ There will be a call to action button for the user to courage him to order.
 
 - Fill Personal Info and Delivery info forms
 
--Ability to choose delivery date
+- Ability to choose delivery date
 
 - Show the Cart
 
@@ -305,7 +305,7 @@ Build a REST API using Express, by creating a proper series of endpoints that pe
 ```
 boxColor: Type: String, Required
 roseColor: Type: String, Required
-size: Type: Number
+size: Type: Number, Required
 image: Type: String
 productDescription:String
 price: Number
@@ -325,13 +325,13 @@ phoneNumber: Number, Required
 
 // Delivery Info
 receiverName:String
-address: String
-detailedAddress: String
+address: String ,Required
+detailedAddress: String, Required
 deliveryDate: Date
 notes:String
 
 // order info
-boxSize:number , Required
+boxSize:number 
 boxColor:String
 roseColor:String
 orderPrice:Number
@@ -351,7 +351,7 @@ paymentMethod: String
 fullName: Type: String, Required
 email: Type: String , Required
 phoneNumber: Number, Required
-occasionDate: Date
+occasionDate: Date , Required
 
 ```
 
@@ -417,7 +417,7 @@ Path: /product/1
 - CRUD Operation: 
 
 - REST Method: DELETE
-Path: /food/1
+Path: /product/1
 
 - Returns: The record from the database as it exists after you delete it (i.e. null)
 
@@ -443,9 +443,13 @@ Path: /food/1
    - Middleware for handling 404 and 500 conditions
 
    - Middleware for handling Basic Auth (username + password) to be used on the /signin route only
+
        - i.e. `app.post('/signin', basicAuthentication, (req, res) => { ... })`
-    - Bearer (token) to be used on any other route in the server that requires a logged in user
+
+    - Middleware for handling Bearer (token) to be used on any other route in the server that requires a logged in user
+
       - i.e. `app.get('/privateRoute', tokenAuthentication, (req, res) => { ... })`
+
 
 - User Persistence using a Mongo Database (NoSQL)
 Mongoose Schemas (data models) to define and model data
@@ -469,7 +473,7 @@ username: Type: String, Required
 
 password: Type: String, Required
 
-email: Type: String
+email: Type: String , Required
 
 fullname: Type: String
 
