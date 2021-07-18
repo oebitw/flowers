@@ -62,7 +62,7 @@ There will be a call to action button for the user to courage him to order.
  
 - Ability to add the product to the shopping cart and checkout to pay.
 
-- Refer to this [document](https://oebitw.github.io/flowers/articles/products-info) To have a solid idea about this page.
+- Refer to this [**DOCUMENT**](https://oebitw.github.io/flowers/articles/products-info) to have a solid idea about this page.
 
 - Refer to the [wireframe and Business process flow](https://miro.com/app/board/o9J_l6EW_DY=/) for better and clearer vision.
 
@@ -444,6 +444,8 @@ Path: /food/1
 
    - Middleware for handling Basic Auth (username + password) to be used on the /signin route only
        - i.e. `app.post('/signin', basicAuthentication, (req, res) => { ... })`
+    - Bearer (token) to be used on any other route in the server that requires a logged in user
+      - i.e. `app.get('/privateRoute', tokenAuthentication, (req, res) => { ... })`
 
 - User Persistence using a Mongo Database (NoSQL)
 Mongoose Schemas (data models) to define and model data
@@ -529,7 +531,49 @@ Body:
 
 - On any error, trigger your error handler with the message “Invalid Login”
 
-**3) As a Developer, I want to make automated tests to be confident that my Code is working perfectly before deployment**
+
+
+**3) As a user, I want to obtain a token after I signin, so that I can re-authenticate**
+
+Following a POST to `/signup` to create an account (or) Following a POST to `/signin` with basic authorization
+Send a response to the client with the proper status code along with an object with the following properties
+
+```
+{
+  user: {
+    _id: 'ID FROM DB',
+    username: 'omar'
+  },
+  token: 'JWT Token Here'
+}
+```
+
+
+
+**4) As a user, I want to use my token to access routes that require a valid user**
+
+The request must send an Authorization header, with the value of `Bearer TOKEN`
+  - TOKEN is the token that you would have returned to the user after their signin.
+
+- If the TOKEN is valid (if it represents an actual user)
+  - The route should function as it normally would (sending a response)
+
+- If not
+  - Send the user an error message stating “Invalid Login”
+
+**5) As the website owner, I want our token system to be as secure as possible so that our users can feel safe when logging in**
+
+Ideas
+
+   - Add an additional layer of encryption
+
+   - Add support for the creation and usage of time sensitive (valid for 60 minutes) JWTs
+
+   - Implement Sessions
+
+
+
+**6) As a Developer, I want to make automated tests to be confident that my Code is working perfectly before deployment**
 
 - POST to /signup to create a new user
 
