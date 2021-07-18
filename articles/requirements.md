@@ -281,3 +281,270 @@ In this epic we will be adding our Discover us page.
 
 
 - As a developer I want to apply RESTful architecture .
+
+
+
+## api-server
+
+Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a Mongo Database, using the REST standard.
+
+### Data Models
+
+- Create three data models one for the store products, and one for our clients , and the last one for users filled our love form using Mongoose.
+
+- Create a Collection Class that accepts a Mongoose Model into the constructor and assigns it as `this.model`
+
+  - Each method should in turn call the appropriate Mongoose method for the model
+  - create()
+  - get() or read()
+  - update()
+  - delete()
+
+#### Our Products Data Model Information
+
+```
+boxColor: Type: String, Required
+roseColor: Type: String, Required
+size: Type: Number
+image: Type: String
+productDescription:String
+price: Number
+stock: Number
+
+```
+
+#### Our client Data Model
+
+```
+
+// Personal Info
+
+userFullName: Type: String, Required
+email: Type: String , Required
+phoneNumber: Number, Required
+
+// Delivery Info
+receiverName:String
+address: String
+detailedAddress: String
+deliveryDate: Date
+notes:String
+
+// order info
+boxSize:number , Required
+boxColor:String
+roseColor:String
+orderPrice:Number
+Qty:number
+frameInfo:String
+customMessage:String
+
+//Payment Info:
+
+paymentMethod: String
+
+```
+
+### Love Form Data Model
+
+```
+fullName: Type: String, Required
+email: Type: String , Required
+phoneNumber: Number, Required
+occasionDate: Date
+
+```
+
+### Routes
+
+In the express server, create a router module for The Product model that you’ve created. Within the router module, create REST route handlers for each of the REST Methods that properly calls the correct CRUD method from the matching data model.
+
+For the Client and Love form Models for now we only want to create a post request to let the client to complete the order and save it's data to our DB or to let the user send us his/her occasion data and contact information.
+
+
+#### Add a Product (mainly used by the shop owner)
+
+- CRUD Operation: Create
+
+- REST Method: POST
+
+- Path: /product
+
+- Input: JSON Object in the Request Body
+
+- Returns: The record that was added to the database.
+
+  - You must generate an ID and attach it to the object.
+
+  - You should verify that only the fields you define get saved as a record
+
+#### Get All Records for the products
+
+- CRUD Operation: Read
+
+- REST Method: GET
+
+- Path: /product
+
+- Returns: An array of objects, each object being one entry from your database
+
+#### Get Specific Product Record
+
+- CRUD Operation: Read
+
+- REST Method: GET
+
+- Path: /product/1
+
+- Returns: The object from the database, which has the id matching that which is in the path
+
+
+#### Update A Product Record
+
+- CRUD Operation: Update
+
+- REST Method: PUT
+Path: /product/1
+
+- Input: JSON Object in the Request Body
+
+- Returns: The object from the database, which has the id matching that which is in the path, with the updated/changed data
+  - You should verify that only the fields you define get saved as a record
+
+
+#### Delete A Product Record
+
+- CRUD Operation: 
+
+- REST Method: DELETE
+Path: /food/1
+
+- Returns: The record from the database as it exists after you delete it (i.e. null)
+
+
+
+
+## auth-server (Stretch Goals for next version of the software after wee see the test results from the shadow button)
+
+
+### technical requirements
+
+- Node.js
+
+- ES6 Classes and best practices
+
+- ExpressJS Web Server, built modularly
+
+  - “Auth” routes for handling the login and authentication system
+     - POST `/signup` to create an account
+
+     - POST `/signin` to login with Basic Auth
+ 
+   - Middleware for handling 404 and 500 conditions
+
+   - Middleware for handling Basic Auth (username + password) to be used on the /signin route only
+       - i.e. `app.post('/signin', basicAuthentication, (req, res) => { ... })`
+
+- User Persistence using a Mongo Database (NoSQL)
+Mongoose Schemas (data models) to define and model data
+
+- Test Driven Development, using Jest
+
+  - Tests will be runnable locally
+
+  - Tests will auto-execute (CI) in your repo using GitHub actions
+
+  - Tests will use a 3rd party library called supergoose to:
+     - “mock” the mongo running database
+
+     - “mock” the running Express server.
+
+
+### Users Data Model
+
+```
+username: Type: String, Required
+
+password: Type: String, Required
+
+email: Type: String
+
+fullname: Type: String
+
+```
+
+### User Stories
+
+***1) As a user, I want to create a new account so that I may later login***
+
+- Make a POST request to the `/signup` route with username and password.
+
+- Server should accept a request body in either JSON or form/urlencoded formats.
+
+
+- On a successful account creation, return a 201 status with the user object in the body.
+
+- On any error, trigger your error handler with an appropriate error
+
+
+Example:
+
+1) Input:
+
+```
+ {
+    "username":"omar",
+    "password":"123123",
+    "fullname":"omar ewies",
+    "email":"omar@omar.com"
+  }
+  ```
+
+2) Output
+
+```
+Body:
+
+{
+    "token": "ENCRYPTED.JWT.TOKEN",
+    "user": {
+        "__v": 0,
+        "_id":
+        "5ec44dcde458f14f77b3d8c6",
+        "acl": [],
+        "password":"$2b$10$Bw5p3Iq,
+        "username": "omar"
+    }
+}
+```
+
+
+**2) As a user, I want to login to my account so that I may access protected information**
+
+- Make a POST request to the `/signin` route
+
+- Send a basic authentication header with a properly encoded username and password combination
+
+- On a successful account login, return a 200 status with the user object in the body
+
+- On any error, trigger your error handler with the message “Invalid Login”
+
+**3) As a Developer, I want to make automated tests to be confident that my Code is working perfectly before deployment**
+
+- POST to /signup to create a new user
+
+- POST to /signin to login as a user (use basic auth)
+
+- Need tests for auth middleware and the routes
+  - Does the middleware function (send it a basic header)
+
+  - Do the routes assert the requirements (signup/signin)
+
+- This is going to require more “end to end” testing that you’ve done in the past
+  - To test signin, your tests actually need to create a user first, then try and login, so there’s a dependency built in
+
+- Ensure that you use supergoose to test your routes and your database
+
+
+
+
